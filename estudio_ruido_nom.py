@@ -267,7 +267,8 @@ class EstudioRuidoNOM:
             cf = None
 
         # ── Nivel de Fuente Fija ──
-        nff      = max(n50_corr, fuente["Neq_eq"])
+        n50_para_max = n50_corr if delta50 >= 0 else fuente["N50_prom"]
+        nff = max(n50_para_max, fuente["Neq_eq"])
         nff_corr = nff + cf if cf_aplica else nff
 
         self._res = {
